@@ -1,94 +1,290 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Scoota1 - Earn Daily</title>
+    <title>Scoota1 - Earn with Electric Scooters</title>
     <style>
+        /* Global Styles */
         body {
-            font-family: Arial, sans-serif;
-            max-width: 800px;
-            margin: 0 auto;
-            padding: 20px;
-            line-height: 1.6;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f5f5f5;
+            color: #333;
         }
-        h1 { color: #2ecc71; }
-        button {
-            background: #2ecc71;
+        
+        /* Navigation */
+        .navbar {
+            background-color: #2ecc71;
+            overflow: hidden;
+            display: flex;
+            justify-content: center;
+        }
+        
+        .navbar a {
+            color: white;
+            text-align: center;
+            padding: 14px 20px;
+            text-decoration: none;
+            font-size: 16px;
+            transition: background-color 0.3s;
+        }
+        
+        .navbar a:hover {
+            background-color: #27ae60;
+        }
+        
+        .navbar a.active {
+            background-color: #1e8449;
+        }
+        
+        /* Tab Content */
+        .tabcontent {
+            display: none;
+            padding: 20px;
+            max-width: 1000px;
+            margin: 0 auto;
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            margin-top: 20px;
+        }
+        
+        /* Home Page */
+        .hero {
+            text-align: center;
+            padding: 40px 20px;
+            background-color: #2ecc71;
+            color: white;
+            border-radius: 8px;
+            margin-bottom: 30px;
+        }
+        
+        /* Scooter Levels */
+        .level {
+            display: flex;
+            align-items: center;
+            margin-bottom: 30px;
+            padding: 20px;
+            border-radius: 8px;
+            background-color: #f9f9f9;
+        }
+        
+        .level img {
+            width: 150px;
+            height: 150px;
+            object-fit: contain;
+            margin-right: 30px;
+            border-radius: 8px;
+        }
+        
+        .level-info {
+            flex: 1;
+        }
+        
+        .level h3 {
+            color: #2ecc71;
+            margin-top: 0;
+        }
+        
+        /* Timer Section */
+        #timer-section {
+            text-align: center;
+            padding: 30px;
+            background-color: #f0f8ff;
+            border-radius: 8px;
+        }
+        
+        #start-btn {
+            background-color: #2ecc71;
             color: white;
             border: none;
-            padding: 12px 24px;
+            padding: 15px 30px;
             font-size: 18px;
             border-radius: 5px;
             cursor: pointer;
             margin: 20px 0;
+            transition: background-color 0.3s;
         }
-        .timer {
+        
+        #start-btn:hover {
+            background-color: #27ae60;
+        }
+        
+        #countdown {
             font-size: 28px;
             font-weight: bold;
-            margin: 20px 0;
             color: #e74c3c;
+            margin: 20px 0;
         }
-        table {
-            width: 100%;
-            border-collapse: collapse;
-            margin: 25px 0;
+        
+        /* Profile Section */
+        .profile-card {
+            background-color: white;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
         }
-        th, td {
-            border: 1px solid #ddd;
-            padding: 12px;
-            text-align: left;
-        }
-        th {
-            background-color: #f2f2f2;
+        
+        /* Responsive */
+        @media (max-width: 768px) {
+            .level {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            .level img {
+                margin-right: 0;
+                margin-bottom: 20px;
+            }
+            
+            .navbar {
+                flex-wrap: wrap;
+            }
         }
     </style>
 </head>
 <body>
-    <h1>🛴 Scoota1</h1>
-    <p>Start your scooters and earn daily income!</p>
-    
-    <!-- Timer Section -->
-    <button onclick="startTimer()">START SCOOTERS</button>
-    <div id="countdown" class="timer"></div>
-    
-    <!-- Investment Levels -->
-    <h2>💰 Investment Levels</h2>
-    <table>
-        <tr>
-            <th>Level</th>
-            <th>Price (USDT)</th>
-            <th>Daily Earnings</th>
-        </tr>
-        <tr><td>1</td><td>$80</td><td>$2.50</td></tr>
-        <tr><td>2</td><td>$180</td><td>$6.30</td></tr>
-        <tr><td>3</td><td>$400</td><td>$15.00</td></tr>
-        <tr><td>4</td><td>$1,000</td><td>$38.00</td></tr>
-        <tr><td>5</td><td>$2,600</td><td>$98.00</td></tr>
-        <tr><td>6</td><td>$6,000</td><td>$230.00</td></tr>
-        <tr><td>7</td><td>$13,000</td><td>$490.00</td></tr>
-        <tr><td>8</td><td>$25,000</td><td>$900.00</td></tr>
-    </table>
-    
-    <!-- Deposit Instructions -->
-    <h2>💳 How to Deposit</h2>
-    <p>Send USDT to this address:</p>
-    <p style="font-family: monospace; background: #f5f5f5; padding: 10px; border-radius: 5px;">
-        0x71C7656EC7ab88b098defB751B7401B5f6d8976F
-    </p>
-    <p>Supported networks: Polygon (MATIC), BEP20 (BSC), TRC20 (TRON)</p>
-    
-    <!-- Referral Link -->
-    <h2>👥 Referral Program</h2>
-    <p>Earn 5% when friends deposit!</p>
-    <p>Your referral link:</p>
-    <input type="text" id="refLink" value="https://yourusername.github.io/scoota1?ref=USER123" 
-           style="width: 100%; padding: 8px; margin-bottom: 10px;" readonly>
-    <button onclick="copyRefLink()">Copy Referral Link</button>
-    
+    <!-- Navigation -->
+    <div class="navbar">
+        <a href="#" class="tablink" onclick="openTab(event, 'home')">Home</a>
+        <a href="#" class="tablink" onclick="openTab(event, 'levels')">Buy Levels</a>
+        <a href="#" class="tablink" onclick="openTab(event, 'scooters')">My Scooters</a>
+        <a href="#" class="tablink" onclick="openTab(event, 'profile')">My Profile</a>
+    </div>
+
+    <!-- Home Tab -->
+    <div id="home" class="tabcontent" style="display: block;">
+        <div class="hero">
+            <h1>Welcome to Scoota1</h1>
+            <p>Earn passive income with our electric scooter sharing platform</p>
+        </div>
+        
+        <h2>How It Works</h2>
+        <p>Scoota1 allows you to invest in electric scooters that generate daily income. The more scooters you own, the more you earn!</p>
+        
+        <h3>Simple Steps:</h3>
+        <ol>
+            <li>Choose your investment level</li>
+            <li>Deposit USDT to purchase scooters</li>
+            <li>Start your scooters daily</li>
+            <li>Earn passive income automatically</li>
+        </ol>
+        
+        <h3>Why Choose Scoota1?</h3>
+        <ul>
+            <li>✅ Daily payouts</li>
+            <li>✅ 8 different investment levels</li>
+            <li>✅ Secure blockchain transactions</li>
+            <li>✅ 5% referral bonus</li>
+        </ul>
+    </div>
+
+    <!-- Buy Levels Tab -->
+    <div id="levels" class="tabcontent">
+        <h2>Choose Your Investment Level</h2>
+        <p>Each level represents a package of scooters that generate daily income</p>
+        
+        <div class="level">
+            <img src="https://cdn-icons-png.flaticon.com/512/2972/2972185.png" alt="Basic Scooter">
+            <div class="level-info">
+                <h3>Level 1 - Starter Pack</h3>
+                <p><strong>Price:</strong> $80 USDT</p>
+                <p><strong>Daily Earnings:</strong> $2.50</p>
+                <p><strong>Scooters:</strong> 1</p>
+                <button>Purchase Level 1</button>
+            </div>
+        </div>
+        
+        <div class="level">
+            <img src="https://cdn-icons-png.flaticon.com/512/3655/3655552.png" alt="Premium Scooter">
+            <div class="level-info">
+                <h3>Level 2 - Premium Pack</h3>
+                <p><strong>Price:</strong> $180 USDT</p>
+                <p><strong>Daily Earnings:</strong> $6.30</p>
+                <p><strong>Scooters:</strong> 3</p>
+                <button>Purchase Level 2</button>
+            </div>
+        </div>
+        
+        <!-- Add more levels following the same pattern -->
+    </div>
+
+    <!-- My Scooters Tab -->
+    <div id="scooters" class="tabcontent">
+        <h2>My Scooters</h2>
+        <p>Start your scooters daily to earn income</p>
+        
+        <div id="timer-section">
+            <h3>Daily Scooter Operation</h3>
+            <p>Run your scooters for 5 hours each day to earn your daily income</p>
+            <button id="start-btn" onclick="startTimer()">START SCOOTERS</button>
+            <div id="countdown"></div>
+            <p>Earnings today: <strong>$2.50</strong> (Level 1)</p>
+        </div>
+        
+        <h3>Your Scooter Fleet</h3>
+        <div class="level">
+            <img src="https://cdn-icons-png.flaticon.com/512/2972/2972185.png" alt="Basic Scooter">
+            <div class="level-info">
+                <h3>Level 1 Scooter</h3>
+                <p><strong>Status:</strong> <span id="scooter-status">Ready</span></p>
+                <p><strong>Next available:</strong> <span id="next-start">Today</span></p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Profile Tab -->
+    <div id="profile" class="tabcontent">
+        <div class="profile-card">
+            <h2>My Profile</h2>
+            
+            <h3>Account Information</h3>
+            <p><strong>Username:</strong> user123</p>
+            <p><strong>Wallet Address:</strong> 0x71C7...8976F</p>
+            <p><strong>Member Since:</strong> June 2023</p>
+            
+            <h3>Investment Summary</h3>
+            <p><strong>Current Level:</strong> 1</p>
+            <p><strong>Total Earned:</strong> $15.00</p>
+            <p><strong>Available Balance:</strong> $5.50</p>
+            <button>Withdraw Earnings</button>
+            
+            <h3>Referral Program</h3>
+            <p>Invite friends and earn 5% of their deposits!</p>
+            <p>Your referral link:</p>
+            <input type="text" id="ref-link" value="https://scoota1.tk?ref=user123" readonly>
+            <button onclick="copyRefLink()">Copy Link</button>
+            <p><strong>Referrals:</strong> 2</p>
+            <p><strong>Referral Earnings:</strong> $8.40</p>
+        </div>
+    </div>
+
     <script>
-        // Timer Function
+        // Tab Navigation
+        function openTab(evt, tabName) {
+            var i, tabcontent, tablinks;
+            
+            tabcontent = document.getElementsByClassName("tabcontent");
+            for (i = 0; i < tabcontent.length; i++) {
+                tabcontent[i].style.display = "none";
+            }
+            
+            tablinks = document.getElementsByClassName("tablink");
+            for (i = 0; i < tablinks.length; i++) {
+                tablinks[i].className = tablinks[i].className.replace(" active", "");
+            }
+            
+            document.getElementById(tabName).style.display = "block";
+            evt.currentTarget.className += " active";
+        }
+
+        // Scooter Timer
         function startTimer() {
-            const fiveHours = 5 * 60 * 60 * 1000; // 5 hours in milliseconds
+            const fiveHours = 5 * 60 * 60 * 1000;
             const endTime = Date.now() + fiveHours;
+            
+            document.getElementById("start-btn").disabled = true;
+            document.getElementById("scooter-status").textContent = "Running";
             
             const timer = setInterval(function() {
                 const now = Date.now();
@@ -97,6 +293,9 @@
                 if (timeLeft <= 0) {
                     clearInterval(timer);
                     document.getElementById("countdown").innerHTML = "✅ Earnings Credited!";
+                    document.getElementById("start-btn").disabled = false;
+                    document.getElementById("scooter-status").textContent = "Completed";
+                    document.getElementById("next-start").textContent = "Tomorrow";
                     return;
                 }
                 
@@ -108,13 +307,13 @@
                     `⏳ ${hours}h ${mins}m ${secs}s remaining`;
             }, 1000);
         }
-        
+
         // Copy Referral Link
         function copyRefLink() {
-            const link = document.getElementById("refLink");
+            const link = document.getElementById("ref-link");
             link.select();
             document.execCommand("copy");
-            alert("Referral link copied!");
+            alert("Referral link copied to clipboard!");
         }
     </script>
 </body>
