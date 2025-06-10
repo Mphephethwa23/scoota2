@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Scoota1 - Earn Daily</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            line-height: 1.6;
+        }
+        h1 { color: #2ecc71; }
+        button {
+            background: #2ecc71;
+            color: white;
+            border: none;
+            padding: 12px 24px;
+            font-size: 18px;
+            border-radius: 5px;
+            cursor: pointer;
+            margin: 20px 0;
+        }
+        .timer {
+            font-size: 28px;
+            font-weight: bold;
+            margin: 20px 0;
+            color: #e74c3c;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 25px 0;
+        }
+        th, td {
+            border: 1px solid #ddd;
+            padding: 12px;
+            text-align: left;
+        }
+        th {
+            background-color: #f2f2f2;
+        }
+    </style>
+</head>
+<body>
+    <h1>🛴 Scoota1</h1>
+    <p>Start your scooters and earn daily income!</p>
+    
+    <!-- Timer Section -->
+    <button onclick="startTimer()">START SCOOTERS</button>
+    <div id="countdown" class="timer"></div>
+    
+    <!-- Investment Levels -->
+    <h2>💰 Investment Levels</h2>
+    <table>
+        <tr>
+            <th>Level</th>
+            <th>Price (USDT)</th>
+            <th>Daily Earnings</th>
+        </tr>
+        <tr><td>1</td><td>$80</td><td>$2.50</td></tr>
+        <tr><td>2</td><td>$180</td><td>$6.30</td></tr>
+        <tr><td>3</td><td>$400</td><td>$15.00</td></tr>
+        <tr><td>4</td><td>$1,000</td><td>$38.00</td></tr>
+        <tr><td>5</td><td>$2,600</td><td>$98.00</td></tr>
+        <tr><td>6</td><td>$6,000</td><td>$230.00</td></tr>
+        <tr><td>7</td><td>$13,000</td><td>$490.00</td></tr>
+        <tr><td>8</td><td>$25,000</td><td>$900.00</td></tr>
+    </table>
+    
+    <!-- Deposit Instructions -->
+    <h2>💳 How to Deposit</h2>
+    <p>Send USDT to this address:</p>
+    <p style="font-family: monospace; background: #f5f5f5; padding: 10px; border-radius: 5px;">
+        0x71C7656EC7ab88b098defB751B7401B5f6d8976F
+    </p>
+    <p>Supported networks: Polygon (MATIC), BEP20 (BSC), TRC20 (TRON)</p>
+    
+    <!-- Referral Link -->
+    <h2>👥 Referral Program</h2>
+    <p>Earn 5% when friends deposit!</p>
+    <p>Your referral link:</p>
+    <input type="text" id="refLink" value="https://yourusername.github.io/scoota1?ref=USER123" 
+           style="width: 100%; padding: 8px; margin-bottom: 10px;" readonly>
+    <button onclick="copyRefLink()">Copy Referral Link</button>
+    
+    <script>
+        // Timer Function
+        function startTimer() {
+            const fiveHours = 5 * 60 * 60 * 1000; // 5 hours in milliseconds
+            const endTime = Date.now() + fiveHours;
+            
+            const timer = setInterval(function() {
+                const now = Date.now();
+                const timeLeft = endTime - now;
+                
+                if (timeLeft <= 0) {
+                    clearInterval(timer);
+                    document.getElementById("countdown").innerHTML = "✅ Earnings Credited!";
+                    return;
+                }
+                
+                const hours = Math.floor(timeLeft / (1000 * 60 * 60));
+                const mins = Math.floor((timeLeft % (1000 * 60 * 60)) / (1000 * 60));
+                const secs = Math.floor((timeLeft % (1000 * 60)) / 1000);
+                
+                document.getElementById("countdown").innerHTML = 
+                    `⏳ ${hours}h ${mins}m ${secs}s remaining`;
+            }, 1000);
+        }
+        
+        // Copy Referral Link
+        function copyRefLink() {
+            const link = document.getElementById("refLink");
+            link.select();
+            document.execCommand("copy");
+            alert("Referral link copied!");
+        }
+    </script>
+</body>
+</html>
